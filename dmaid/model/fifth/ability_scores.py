@@ -7,13 +7,14 @@ class AbilityScores(object):
     Class object for ability scores and such.
     """
 
-    def __init__(self):
-        strength = int(0)
-        dexterity = int(0)
-        constitution = int(0)
-        intelligence = int(0)
-        wisdom = int(0)
-        charisma = int(0)
+    def __init__(self, str_num=0, dex_num=0, con_num=0, int_num=0, wis_num=0, cha_num=0):
+
+        self.strength = int(str_num)
+        self.dexterity = int(dex_num)
+        self.constitution = int(con_num)
+        self.intelligence = int(int_num)
+        self.wisdom = int(wis_num)
+        self.charisma = int(cha_num)
 
     @property
     def strmod(self):

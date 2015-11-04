@@ -17,4 +17,6 @@ class TestDescriptions(object):
 
     def test_char_level(self):
 
-        assert_equals(3, self.descriptions.char_level)
+        expected = 3
+        actual = self.descriptions.char_level
+        assert_equals(expected, actual)

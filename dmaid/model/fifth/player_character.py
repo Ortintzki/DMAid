@@ -9,21 +9,23 @@ class Character(object):
     """
     Character model.
     """
-    def __init__(self):
+    # pylint: disable=W0142
+    def __init__(self, ability_kwargs, personality_kwargs, description_kwargs, proficiency=2, hp=0, ac=10, initiative=0,
+                 speed=0):
 
-        self.abilities = AbilityScores()
-        self.personality = Personality()
-        self.descriptions = Descriptions()
+        self.abilities = AbilityScores(**ability_kwargs)
+        self.personality = Personality(**personality_kwargs)
+        self.descriptions = Descriptions(**description_kwargs)
 
         # Skills
-        # are probably just a list of skills that the character is proficient 
-        # in, which is used to compute the actual score.  It's just ability 
+        # are probably just a list of skills that the character is proficient
+        # in, which is used to compute the actual score.  It's just ability
         # score and proficiency anyway.
 
         # Mechanical scores
-        inspiration = False
-        proficiency = 0
-        hit_points = 0
-        armor_class = 0
-        initiative = 0
-        speed = 0
+        self.inspiration = False
+        self.proficiency = proficiency
+        self.hit_points = hp
+        self.armor_class = ac
+        self.initiative = initiative
+        self.speed = speed
