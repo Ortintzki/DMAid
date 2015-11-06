@@ -3,14 +3,14 @@ Unit tests for descriptive traits.
 """
 
 from nose.tools import assert_equals
-from dmaid.model.fifth.descriptive_traits import Descriptions
+from dmaid.model.fifth.descriptive_traits import DescriptionsMixin
 
 
 class TestDescriptions(object):
 
     def setup(self):
 
-        self.descriptions = Descriptions()
+        self.descriptions = DescriptionsMixin()
         self.descriptions.classes = {
             'fighter': 2,
             'wizard': 1,

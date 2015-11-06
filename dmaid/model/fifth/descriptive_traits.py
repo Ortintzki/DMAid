@@ -2,14 +2,17 @@
 Model for the generally cosmetic or rarely referenced traits.
 Includes class because once you derive class abilities you basically never use it.
 """
+import logging
 
 
-class Descriptions(object):
+class DescriptionsMixin(object):
     """
     Descriptions model.
     """
     def __init__(self, char_name="", player_name="", classes=None, race='', alignment=None, background="", age=0,
                  height=(0, 0), weight=0, eyes="", skin="", hair=""):
+
+        super(DescriptionsMixin, self).__init__()
 
         # Core character attributes
         self.char_name = char_name
@@ -53,3 +56,22 @@ class Alignments(object):
     CN = "Chaotic Neutral"
     CE = "Chaotic Evil"
 
+
+class Classes(object):
+    """
+
+    """
+
+    VALID_CLASSES = ['Allowed Class']
+
+    def __init__(self, classes_dict):
+
+        for name, level in classes_dict:
+            if not type(level) is int:
+                logging.error("Classes object only supports integer values, got type %s", type(level))
+                raise ValueError
+            if not name in self.VALID_CLASSES:
+                logging.error("Classes object received unsupported 5th edition class name %s", name)
+                raise ValueError
+
+        self.classes_dict = classes_dict

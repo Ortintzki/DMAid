@@ -2,11 +2,11 @@
 Model for a player character in DnD 5e
 """
 from dmaid.model.fifth.ability_scores import AbilityScoresMixin
-from dmaid.model.fifth.personality_traits import Personality
-from dmaid.model.fifth.descriptive_traits import Descriptions
+from dmaid.model.fifth.personality_traits import PersonalityMixin
+from dmaid.model.fifth.descriptive_traits import DescriptionsMixin
 
 
-class Character(AbilityScoresMixin, object):
+class Character(AbilityScoresMixin, PersonalityMixin, DescriptionsMixin, object):
     """
     Character model.
     """
@@ -14,9 +14,9 @@ class Character(AbilityScoresMixin, object):
     def __init__(self, ability_kwargs, personality_kwargs, description_kwargs, proficiency=2, hp=0, ac=10, initiative=0,
                  speed=0):
 
-        super(Character, self).__init__(**ability_kwargs)
-        self.personality = Personality(**personality_kwargs)
-        self.descriptions = Descriptions(**description_kwargs)
+        AbilityScoresMixin.__init__(self, **ability_kwargs)
+        PersonalityMixin.__init__(self, **personality_kwargs)
+        DescriptionsMixin.__init__(self, **description_kwargs)
 
         # Skills
         # are probably just a list of skills that the character is proficient
