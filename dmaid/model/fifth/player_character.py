@@ -30,3 +30,4 @@ class Character(AbilityScoresMixin, PersonalityMixin, DescriptionsMixin, object)
         self.armor_class = ac
         self.initiative = initiative
         self.speed = speed
+

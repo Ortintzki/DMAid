@@ -17,7 +17,7 @@ class DescriptionsMixin(object):
         # Core character attributes
         self.char_name = char_name
         self.player_name = player_name
-        self.classes = classes
+        self.classes = Classes(classes)
         self.race = race
         self.alignment = alignment
         self.background = background
@@ -35,10 +35,7 @@ class DescriptionsMixin(object):
         """
         Return total level possessed by the character.
         """
-        level = 0
-        for _, value in self.classes.items():
-            level += value
-        return level
+        return self.classes.char_level()
 
 
 class Alignments(object):
@@ -62,16 +59,17 @@ class Classes(object):
 
     """
 
-    VALID_CLASSES = ['Allowed Class']
-
     def __init__(self, classes_dict):
 
-        for name, level in classes_dict:
+        for _, level in classes_dict.iteritems():
             if not type(level) is int:
                 logging.error("Classes object only supports integer values, got type %s", type(level))
                 raise ValueError
-            if not name in self.VALID_CLASSES:
-                logging.error("Classes object received unsupported 5th edition class name %s", name)
-                raise ValueError
 
         self.classes_dict = classes_dict
+
+    def char_level(self):
+        value = 0
+        for _, level in self.classes_dict.iteritems():
+            value += level
+        return value
