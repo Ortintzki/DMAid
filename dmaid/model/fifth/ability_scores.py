@@ -2,13 +2,15 @@
 Module to handle ability score operations, derivations.
 """
 
-class AbilityScores(object):
+
+class AbilityScoresMixin(object):
     """
     Class object for ability scores and such.
     """
 
     def __init__(self, str_num=0, dex_num=0, con_num=0, int_num=0, wis_num=0, cha_num=0):
 
+        super(AbilityScoresMixin, self).__init__()
         self.strength = int(str_num)
         self.dexterity = int(dex_num)
         self.constitution = int(con_num)

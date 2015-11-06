@@ -5,6 +5,7 @@ Unit tests for descriptive traits.
 from nose.tools import assert_equals
 from dmaid.model.fifth.descriptive_traits import Descriptions
 
+
 class TestDescriptions(object):
 
     def setup(self):

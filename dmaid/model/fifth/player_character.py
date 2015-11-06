@@ -1,11 +1,12 @@
 """
 Model for a player character in DnD 5e
 """
-from dmaid.model.fifth.ability_scores import AbilityScores
+from dmaid.model.fifth.ability_scores import AbilityScoresMixin
 from dmaid.model.fifth.personality_traits import Personality
 from dmaid.model.fifth.descriptive_traits import Descriptions
 
-class Character(object):
+
+class Character(AbilityScoresMixin, object):
     """
     Character model.
     """
@@ -13,7 +14,7 @@ class Character(object):
     def __init__(self, ability_kwargs, personality_kwargs, description_kwargs, proficiency=2, hp=0, ac=10, initiative=0,
                  speed=0):
 
-        self.abilities = AbilityScores(**ability_kwargs)
+        super(Character, self).__init__(**ability_kwargs)
         self.personality = Personality(**personality_kwargs)
         self.descriptions = Descriptions(**description_kwargs)
 

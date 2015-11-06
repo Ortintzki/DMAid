@@ -2,6 +2,8 @@
 Model for the generally cosmetic or rarely referenced traits.
 Includes class because once you derive class abilities you basically never use it.
 """
+
+
 class Descriptions(object):
     """
     Descriptions model.

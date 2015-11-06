@@ -1,6 +1,8 @@
 """
 Model for a character's personality traits.
 """
+
+
 class Personality(object):
     """
     Stored in key-value pairs in which the key is a short name for the trait,

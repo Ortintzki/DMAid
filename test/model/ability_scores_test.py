@@ -3,13 +3,14 @@ Unit tests for ability scores.
 """
 
 from nose.tools import assert_equals
-from dmaid.model.fifth.ability_scores import AbilityScores
+from dmaid.model.fifth.ability_scores import AbilityScoresMixin
+
 
 class TestAbilityScores(object):
 
     def setup(self):
 
-        self.abilities = AbilityScores()
+        self.abilities = AbilityScoresMixin()
 
     def test_strmod(self):
         self.abilities.strength = 10
