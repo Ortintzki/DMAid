@@ -9,6 +9,8 @@ from dmaid.model.fifth.descriptive_traits import DescriptionsMixin
 class Character(AbilityScoresMixin, PersonalityMixin, DescriptionsMixin, object):
     """
     Character model.
+
+    Refer to the appropriate mixins for how the dictionaries should be structured.
     """
     # pylint: disable=W0142
     def __init__(self, ability_kwargs, personality_kwargs, description_kwargs, proficiency=2, hp=0, ac=10, initiative=0,
@@ -21,7 +23,7 @@ class Character(AbilityScoresMixin, PersonalityMixin, DescriptionsMixin, object)
         # Skills
         # are probably just a list of skills that the character is proficient
         # in, which is used to compute the actual score.  It's just ability
-        # score and proficiency anyway.
+        # mod and proficiency anyway.
 
         # Mechanical scores
         self.inspiration = False
@@ -31,3 +33,5 @@ class Character(AbilityScoresMixin, PersonalityMixin, DescriptionsMixin, object)
         self.initiative = initiative
         self.speed = speed
 
+    def saving_throw(self, ability):
+        return AbilityScoresMixin._saving_throw(self, self.proficiency, ability)

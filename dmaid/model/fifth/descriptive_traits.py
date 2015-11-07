@@ -56,10 +56,14 @@ class Alignments(object):
 
 class Classes(object):
     """
-
+    Handles character classes
     """
 
     def __init__(self, classes_dict):
+
+        if classes_dict is None:
+            self.classes_dict = classes_dict
+            return
 
         for _, level in classes_dict.iteritems():
             if not type(level) is int:

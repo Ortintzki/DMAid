@@ -10,28 +10,18 @@ class TestAbilityScores(object):
 
     def setup(self):
 
-        self.abilities = AbilityScoresMixin()
+        self.abilities = AbilityScoresMixin(str_num=10, dex_num=12, str_save=True)
 
-    def test_strmod(self):
-        self.abilities.strength = 10
-        assert_equals(0, self.abilities.strmod)
+    def test_mod(self):
 
-    def test_dexmod(self):
-        self.abilities.dexterity = 10
-        assert_equals(0, self.abilities.dexmod)
+        assert_equals(self.abilities.ability_mod('strength'), 0)
+        assert_equals(self.abilities.ability_mod('dexterity'), 1)
 
-    def test_conmod(self):
-        self.abilities.constitution = 10
-        assert_equals(0, self.abilities.conmod)
+    def test_saving_throws(self):
 
-    def test_intmod(self):
-        self.abilities.intelligence = 10
-        assert_equals(0, self.abilities.intmod)
+        expected_str_save = 2
+        expected_dex_save = 1
+        proficiency = 2
 
-    def test_wismod(self):
-        self.abilities.wisdom = 10
-        assert_equals(0, self.abilities.wismod)
-
-    def test_chamod(self):
-        self.abilities.charisma = 10
-        assert_equals(0, self.abilities.chamod)
+        assert_equals(self.abilities._saving_throw(proficiency, 'strength'), expected_str_save)
+        assert_equals(self.abilities._saving_throw(proficiency, 'dexterity'), expected_dex_save)
