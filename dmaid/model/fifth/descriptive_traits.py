@@ -57,6 +57,8 @@ class Alignments(object):
 class Classes(object):
     """
     Handles character classes
+
+    TODO: This is going to have to get yanked out and expanded in the future.
     """
 
     def __init__(self, classes_dict):
