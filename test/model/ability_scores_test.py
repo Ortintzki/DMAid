@@ -23,5 +23,5 @@ class TestAbilityScores(object):
         expected_dex_save = 1
         proficiency = 2
 
-        assert_equals(self.abilities._saving_throw(proficiency, 'strength'), expected_str_save)
-        assert_equals(self.abilities._saving_throw(proficiency, 'dexterity'), expected_dex_save)
+        assert_equals(self.abilities.saving_throw_mod('strength', proficiency=proficiency), expected_str_save)
+        assert_equals(self.abilities.saving_throw_mod('dexterity', proficiency=proficiency), expected_dex_save)
