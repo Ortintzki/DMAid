@@ -38,3 +38,4 @@ class TestPlayerCharacter(object):
         assert_equals(self.test_character.strength, expected_strength)
         assert_equals(self.test_character.personality, expected_personality)
         assert_equals(self.test_character.char_name, expected_char_name)
+

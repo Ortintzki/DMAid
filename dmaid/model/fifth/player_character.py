@@ -21,11 +21,6 @@ class Character(SkillsMixin, PersonalityMixin, DescriptionsMixin, object):
         PersonalityMixin.__init__(self, **personality_kwargs)
         DescriptionsMixin.__init__(self, **description_kwargs)
 
-        # Skills
-        # are probably just a list of skills that the character is proficient
-        # in, which is used to compute the actual score.  It's just ability
-        # mod and proficiency anyway.
-
         # Mechanical scores
         self.inspiration = False
         self.proficiency = proficiency
@@ -33,5 +28,4 @@ class Character(SkillsMixin, PersonalityMixin, DescriptionsMixin, object):
         self.armor_class = ac
         self.initiative = self.ability_mod('dexterity')
         self.speed = speed
-
 
