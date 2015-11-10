@@ -1,0 +1,8 @@
+aniso8601=0.82
+flask=0.10.1
+flask-restful=0.3.4
+flask-pymongo=0.4.0
+itsdangerous=0.21
+Jinja2=2.4
+virtualenv=13.1.2
+Werkzeug=0.7
