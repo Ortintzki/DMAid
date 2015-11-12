@@ -1,5 +1,5 @@
 """
-Setup file for DnD_Platform
+Setup file for DMAid
 """
 try:
     from setuptools import setup
@@ -9,14 +9,15 @@ except ImportError:
 CONFIG = {
             'description': 'A dungeons and dragons platform for creating new characters and playing on a grid.',
             'author': 'Jonas "Ortin" Tarnowetzki',
-            'url': 'www.github.com/ortintzki/dnd_platform',
-            'download_url': 'www.github.com/ortintzki/dnd_platform',
+            'url': 'www.github.com/ortintzki/dmaid',
+            'download_url': 'www.github.com/ortintzki/dmaid',
             'author_email': 'ortintzki@gmail.com',
             'version': '0.1.0',
-            'install_requires': ['nose', 'mongodb', 'wxpython'],
-            'packages': ['dnd_platform'],
+            'install_requires': [],
+            'packages': ['dmaid'],
             'scripts': [],
-            'name': 'DnD_platform',
+            'name': 'DMAid',
          }
 setup(**CONFIG)
 
+# 'Flask', 'Flask-RESTful', 'Flask-pymongo', 'itsdangerous', 'Jinja2', 'MarkupSafe', 'nose', 'mongodb', 'wxpython'
