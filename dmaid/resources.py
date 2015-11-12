@@ -1,13 +1,14 @@
 import json
 import flask_restful as restful
 
-from flask import request, abort
+from flask import abort
 from flask_restful import reqparse
-from dmaid import app, api, mongo
-from bson.objectid import ObjectId
+from dmaid import api, mongo
+from dmaid.JResource import render_response
+
 
 class ReadingList(restful.Resource):
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         self.parser = reqparse.RequestParser()
         self.parser.add_argument('reading', type=str)
         super(ReadingList, self).__init__()
@@ -42,6 +43,13 @@ class Root(restful.Resource):
             'mongo': str(mongo.db),
         }
 
+
+class Home(restful.Resource):
+    def get(self):
+        return render_response('home.html')
+
+
 api.add_resource(Root, '/')
+api.add_resource(Home, '/home/')
 api.add_resource(ReadingList, '/readings/')
 api.add_resource(Reading, '/readings/<ObjectId:reading_id>')
