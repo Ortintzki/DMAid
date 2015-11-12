@@ -3,7 +3,7 @@ import flask_restful as restful
 
 from flask import request, abort
 from flask_restful import reqparse
-from flask_rest_service import app, api, mongo
+from dmaid import app, api, mongo
 from bson.objectid import ObjectId
 
 class ReadingList(restful.Resource):
