@@ -1,7 +1,7 @@
 import json
 import flask_restful as restful
 
-from flask import request, abort
+from flask import request, abort, render_template
 from flask_restful import reqparse
 from dmaid import app, api, mongo
 from bson.objectid import ObjectId
@@ -42,6 +42,12 @@ class Root(restful.Resource):
             'mongo': str(mongo.db),
         }
 
+class Home(restful.Resource):
+    def get(self, name=None):
+        return render_template('home.html', name=name)
+
 api.add_resource(Root, '/')
+api.add_resource(Home, '/home')
+api.add_resource(Home, '/home/<name>')
 api.add_resource(ReadingList, '/readings/')
 api.add_resource(Reading, '/readings/<ObjectId:reading_id>')
