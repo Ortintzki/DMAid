@@ -4,12 +4,11 @@ import flask_restful as restful
 from flask import abort
 from flask_restful import reqparse
 from dmaid import api, mongo
+from dmaid.JResource import render_response
 
-from dmaid import JResource as Resource
 
-
-class ReadingList(Resource):
-    def __init__(self, *args, **kwargs):
+class ReadingList(restful.Resource):
+    def __init__(self):
         self.parser = reqparse.RequestParser()
         self.parser.add_argument('reading', type=str)
         super(ReadingList, self).__init__()
@@ -27,7 +26,7 @@ class ReadingList(Resource):
         return mongo.db.readings.find_one({"_id": reading_id})
 
 
-class Reading(Resource):
+class Reading(restful.Resource):
     def get(self, reading_id):
         return mongo.db.readings.find_one_or_404({"_id": reading_id})
 
@@ -37,7 +36,7 @@ class Reading(Resource):
         return '', 204
 
 
-class Root(Resource):
+class Root(restful.Resource):
     def get(self):
         return {
             'status': 'OK',
@@ -45,9 +44,9 @@ class Root(Resource):
         }
 
 
-class Home(Resource):
+class Home(restful.Resource):
     def get(self):
-        return self.render_response('home.html')
+        return render_response('home.html')
 
 
 api.add_resource(Root, '/')
