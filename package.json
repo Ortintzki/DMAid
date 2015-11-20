@@ -1,0 +1,23 @@
+{
+  "name": "DMAid",
+  "version": "0.1.0",
+  "description": "",
+  "main": "runserver.py",
+  "directories": {
+    "bin": "binaries",
+    "dmaid": "main thing",
+    "docs": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "author": "Jonas Tarnowetzki",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Ortintzki/DMAid"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.11",
+    "gulp-sass": "^2.1.0"
+  }
+}

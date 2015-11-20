@@ -1,12 +1,12 @@
 import json
 import flask_restful as restful
 
-from flask import abort
+from flask import abort, render_template, make_response
 from flask_restful import reqparse
 from dmaid import api, mongo
-from dmaid.JResource import render_response
 
 
+# TODO: Kill this
 class ReadingList(restful.Resource):
     def __init__(self):
         self.parser = reqparse.RequestParser()
@@ -14,7 +14,7 @@ class ReadingList(restful.Resource):
         super(ReadingList, self).__init__()
 
     def get(self):
-        return  [x for x in mongo.db.readings.find()]
+        return [x for x in mongo.db.readings.find()]
 
     def post(self):
         args = self.parser.parse_args()
@@ -22,10 +22,11 @@ class ReadingList(restful.Resource):
             abort(400)
 
         jo = json.loads(args['reading'])
-        reading_id =  mongo.db.readings.insert(jo)
+        reading_id = mongo.db.readings.insert(jo)
         return mongo.db.readings.find_one({"_id": reading_id})
 
 
+# TODO: Kill this
 class Reading(restful.Resource):
     def get(self, reading_id):
         return mongo.db.readings.find_one_or_404({"_id": reading_id})
@@ -38,18 +39,19 @@ class Reading(restful.Resource):
 
 class Root(restful.Resource):
     def get(self):
-        return {
-            'status': 'OK',
-            'mongo': str(mongo.db),
-        }
-
-
-class Home(restful.Resource):
-    def get(self):
         return render_response('home.html')
 
 
 api.add_resource(Root, '/')
-api.add_resource(Home, '/home/')
 api.add_resource(ReadingList, '/readings/')
 api.add_resource(Reading, '/readings/<ObjectId:reading_id>')
+
+
+def render_response(template, **context):
+    """
+    A helper to render a response with a page template.
+    :param template: the template to render
+    :param context: the context args of the template
+    :return: a response object with the template already rendered
+    """
+    return make_response(render_template(template, **context))
