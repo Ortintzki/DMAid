@@ -1,5 +1,44 @@
 {% extends "base.html" %}
 
-{% block title %}This is the homepage.{% endblock %}
+{% block title %}DMAid: tools for DMs and players{% endblock %}
 
-{% block content %}Dude{% endblock %}
+{% block brand %}DMAid{% endblock %}
+
+{% block content %}
+<!-- Jumbotron Header -->
+<header class="jumbotron hero-spacer">
+    <h1>DMAid: tools for DMs and players</h1>
+    <p>DMAid aims to be the best available tool for handling character data.  With it you can quickly and painlessly create new dungeons and dragons characters and share your characters with your friends!</p>
+    <p><a class="btn btn-primary btn-large">Explore DMAid!</a>
+    </p>
+</header>
+
+<hr>
+
+<!-- Title -->
+<div class="row">
+    <div class="col-lg-12">
+        <h3>Latest Features</h3>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- Page Features -->
+<div class="row text-center">
+    <div class="col-md-3 col-sm-6 hero-feature">
+        <div class="thumbnail">
+            <img src="http://placehold.it/800x500" alt="">
+            <div class="caption">
+                <h3>5th Edition Character Creator</h3>
+                <p>Make your fifth edition Dungeons and Dragons characters faster and easier!</p>
+                <p>
+                    <a href="#" class="btn btn-primary">Try Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<hr>
+{% endblock %}

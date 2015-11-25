@@ -1,0 +1,20 @@
+/* line 1, ../sass/partials/_home.scss */
+body {
+  padding-top: 70px;
+  /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+/* line 5, ../sass/partials/_home.scss */
+.hero-spacer {
+  margin-top: 50px;
+}
+
+/* line 9, ../sass/partials/_home.scss */
+.hero-feature {
+  margin-bottom: 30px;
+}
+
+/* line 13, ../sass/partials/_home.scss */
+footer {
+  margin: 50px 0;
+}
