@@ -37,12 +37,23 @@ class Reading(restful.Resource):
         return '', 204
 
 
+# TODO: Kill this
 class Root(restful.Resource):
+    def get(self):
+        return {
+            'status': 'OK',
+            'mongo': str(mongo.db),
+        }
+
+
+class Home(restful.Resource):
     def get(self):
         return render_response('home.html')
 
 
-api.add_resource(Root, '/')
+
+api.add_resource(Home, '/')
+api.add_resource(Root, '/root/')
 api.add_resource(ReadingList, '/readings/')
 api.add_resource(Reading, '/readings/<ObjectId:reading_id>')
 
