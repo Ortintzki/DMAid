@@ -18,3 +18,13 @@ body {
 footer {
   margin: 50px 0;
 }
+
+/* line 1, ../sass/partials/_global.scss */
+body {
+  background-color: #777777;
+}
+
+/* line 5, ../sass/partials/_global.scss */
+.container-main {
+  background-color: #FFFFFF;
+}
