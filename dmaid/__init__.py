@@ -6,7 +6,7 @@ from flask import Flask
 from flask_pymongo import PyMongo
 from flask import make_response
 
-MONGO_URL = os.environ.get('MONGO_URL')
+MONGO_URL = os.environ.get('MONGOLAB_URI')
 if not MONGO_URL:
     MONGO_URL = "mongodb://localhost:27017/rest";
 
