@@ -51,7 +51,6 @@ class Home(restful.Resource):
         return render_response('home.html')
 
 
-
 api.add_resource(Home, '/')
 api.add_resource(Root, '/root/')
 api.add_resource(ReadingList, '/readings/')
