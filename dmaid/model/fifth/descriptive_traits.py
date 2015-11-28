@@ -9,7 +9,7 @@ class DescriptionsMixin(object):
     """
     Descriptions model.
     """
-    def __init__(self, char_name="", player_name="", classes=None, race='', alignment=None, background="", age=0,
+    def __init__(self, char_name="", player_name="", race='', alignment=None, background="", age=0,
                  height=(0, 0), weight=0, eyes="", skin="", hair=""):
 
         super(DescriptionsMixin, self).__init__()
@@ -17,7 +17,6 @@ class DescriptionsMixin(object):
         # Core character attributes
         self.char_name = char_name
         self.player_name = player_name
-        self.classes = Classes(classes)
         self.race = race
         self.alignment = alignment
         self.background = background
@@ -29,13 +28,6 @@ class DescriptionsMixin(object):
         self.eyes = eyes
         self.skin = skin
         self.hair = hair
-
-    @property
-    def char_level(self):
-        """
-        Return total level possessed by the character.
-        """
-        return self.classes.char_level()
 
 
 class Alignments(object):
@@ -52,30 +44,3 @@ class Alignments(object):
     CG = "Chaotic Good"
     CN = "Chaotic Neutral"
     CE = "Chaotic Evil"
-
-
-class Classes(object):
-    """
-    Handles character classes
-
-    TODO: This is going to have to get yanked out and expanded in the future.
-    """
-
-    def __init__(self, classes_dict):
-
-        if classes_dict is None:
-            self.classes_dict = classes_dict
-            return
-
-        for _, level in classes_dict.iteritems():
-            if not type(level) is int:
-                logging.error("Classes object only supports integer values, got type %s", type(level))
-                raise ValueError
-
-        self.classes_dict = classes_dict
-
-    def char_level(self):
-        value = 0
-        for _, level in self.classes_dict.iteritems():
-            value += level
-        return value

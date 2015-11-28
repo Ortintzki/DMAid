@@ -28,7 +28,8 @@ class TestPlayerCharacter(object):
         proficiency = 2
 
         self.test_character = Character(skill_value_dict, skill_proficiency_dict, ability_kwargs, personality_kwargs,
-                                        descriptive_kwargs, proficiency=proficiency)
+                                        descriptive_kwargs, classes={'fighter': 2, 'wizard': 1},
+                                        proficiency=proficiency)
 
     def test_mixins_properly_created_and_accessible(self):
 
@@ -38,4 +39,10 @@ class TestPlayerCharacter(object):
         assert_equals(self.test_character.strength, expected_strength)
         assert_equals(self.test_character.personality, expected_personality)
         assert_equals(self.test_character.char_name, expected_char_name)
+
+    def test_char_level(self):
+
+        expected = 3
+        actual = self.test_character.char_level
+        assert_equals(expected, actual)
 
