@@ -17,23 +17,23 @@ class AbilityScoresMixin(object):
         'charisma': 'cha_save',
     }
 
-    def __init__(self, str_num=0, dex_num=0, con_num=0, int_num=0, wis_num=0, cha_num=0, str_save=False, dex_save=False,
-                 con_save=False, int_save=False, wis_save=False, cha_save=False):
+    def __init__(self, strength=0, dexterity=0, constitution=0, intelligence=0, wisdom=0, charisma=0, str_save=False,
+                 dex_save=False, con_save=False, int_save=False, wis_save=False, cha_save=False):
 
         super(AbilityScoresMixin, self).__init__()
-        self.strength = int(str_num)
-        self.dexterity = int(dex_num)
-        self.constitution = int(con_num)
-        self.intelligence = int(int_num)
-        self.wisdom = int(wis_num)
-        self.charisma = int(cha_num)
+        self.strength = int(strength)
+        self.dexterity = int(dexterity)
+        self.constitution = int(constitution)
+        self.intelligence = int(intelligence)
+        self.wisdom = int(wisdom)
+        self.charisma = int(charisma)
 
-        self.str_save = str_save
-        self.dex_save = dex_save
-        self.con_save = con_save
-        self.int_save = int_save
-        self.wis_save = wis_save
-        self.cha_save = cha_save
+        self.str_save = bool(str_save)
+        self.dex_save = bool(dex_save)
+        self.con_save = bool(con_save)
+        self.int_save = bool(int_save)
+        self.wis_save = bool(wis_save)
+        self.cha_save = bool(cha_save)
 
     def ability_mod(self, ability):
         """

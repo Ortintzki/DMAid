@@ -17,7 +17,7 @@ class Character(SkillsMixin, PersonalityMixin, DescriptionsMixin, object):
     """
     # pylint: disable=W0142
     def __init__(self, skill_value_dict, skill_proficiency_dict, ability_kwargs_dict, personality_kwargs,
-                 description_kwargs, classes=None, proficiency=2, hp=0, ac=10, speed=0):
+                 description_kwargs, classes=None, inspiration=False, proficiency=2, hp=0, ac=10, speed=0):
 
         SkillsMixin.__init__(self, skill_value_dict, skill_proficiency_dict, ability_kwargs_dict)
         PersonalityMixin.__init__(self, **personality_kwargs)
@@ -25,12 +25,12 @@ class Character(SkillsMixin, PersonalityMixin, DescriptionsMixin, object):
 
         # Mechanical scores
         self.classes = Classes(classes)
-        self.inspiration = False
-        self.proficiency = proficiency
-        self.hit_points = hp
-        self.armor_class = ac
+        self.inspiration = bool(inspiration)
+        self.proficiency = int(proficiency)
+        self.hit_points = int(hp)
+        self.armor_class = int(ac)
         self.initiative = self.ability_mod('dexterity')
-        self.speed = speed
+        self.speed = int(speed)
 
     @property
     def char_level(self):

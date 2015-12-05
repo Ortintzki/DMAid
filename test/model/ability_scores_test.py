@@ -10,7 +10,7 @@ class TestAbilityScores(object):
 
     def setup(self):
 
-        self.abilities = AbilityScoresMixin(str_num=10, dex_num=12, str_save=True)
+        self.abilities = AbilityScoresMixin(strength=10, dexterity=12, str_save=True)
 
     def test_mod(self):
 

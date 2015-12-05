@@ -21,8 +21,8 @@ class TestSkillsMixin(object):
             'investigation': False,
         }
         test_ability_dict = {
-            'str_num': 10,
-            'int_num': 14
+            'strength': 10,
+            'intelligence': 14
         }
         self.proficiency = 2
         self.skills = SkillsMixin(test_skills_dict, test_proficiency_dict, test_ability_dict)

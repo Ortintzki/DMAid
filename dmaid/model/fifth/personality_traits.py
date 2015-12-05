@@ -16,8 +16,8 @@ class PersonalityMixin(object):
         """
 
         super(PersonalityMixin, self).__init__()
-        self.personality = personality
-        self.ideals = ideals
-        self.bonds = bonds
-        self.flaws = flaws
+        self.personality = str(personality)
+        self.ideals = str(ideals)
+        self.bonds = str(bonds)
+        self.flaws = str(flaws)
 
